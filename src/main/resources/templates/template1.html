@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html
+xmlns:th="http://www.thymeLeaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8" />
+<title>TAXES</title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="css/style.css"/>
+</head>
+<body>
+	<header>
+		<div class="navbar navbar-light">
+			<div class="container-fluid">
+				<ul class="nav navbar-nav">
+					<li><a th:href="@{/entreprises}">Entreprises</a></li>
+					<li><a th:href="@{/taxes}">Taxes</a></li>
+					<li><a th:href="@{/formEntreprise}">Saisie</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+						<p th:inline="text">
+							[[${#httpServletRequest.remoteUser}]]
+
+							<a th:href="@{/login?logout}">
+								Logout
+							</a>
+						</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</header>
+	<section layout:fragment="content">
+	</section>
+	<footer>
+		<div class="navbar-fixed-bottom">
+			<small>@Adresse de votre institution</small>
+		</div>
+	</footer>
+</body>
+</html>

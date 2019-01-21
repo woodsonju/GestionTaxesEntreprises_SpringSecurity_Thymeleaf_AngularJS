@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorator="template1">
+<head>
+<meta charset="UTF-8" />
+<title>Taxes</title>
+</head>
+<body>
+	<div layout:fragment="content" class="container col-md-10 col-md-offset-1 col-sm-6 col-xs-6 col-xs-offset-3">
+		<div class="panel panel-primary">
+			<div class="panel-heading">List des taxes de l'entreprise</div>
+			<div class="panel-body">
+				<form th:action="@{/taxes}" method="get" id="myForm">
+					<label>Entreprises: </label>
+					<select name="code" onchange="document.getElementById('myForm').submit()">
+						<option th:each="e:${entreprises}" 
+								th:text="${e.nom}"
+								th:value="${e.code}">
+						</option>
+					</select>
+				</form>
+				<table class="table table-striped spacer">
+					<thead >
+						<tr>
+							<th>numero</th>
+							<th>Titre</th>
+							<th>Date</th>
+							<th>Montant</th>
+							<th>Type de taxe</th>
+							<th>Entreprise</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="taxe:${taxes}">
+							<td th:text="${taxe.numero}"></td>
+							<td th:text="${taxe.titre}"></td>
+							<td th:text="${taxe.date}"></td>
+							<td th:text="${taxe.montant}"></td>
+							<td th:text="${taxe.class.simpleName}"></td>
+							<td th:text="${taxe.entreprise.nom}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

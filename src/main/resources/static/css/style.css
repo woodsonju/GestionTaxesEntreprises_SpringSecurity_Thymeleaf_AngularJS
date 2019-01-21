@@ -1,0 +1,17 @@
+.spacer {
+	margin-top: 10px;
+}
+
+
+.backColor {
+	background-color: rgb(239, 240, 219);
+}
+
+
+.red {
+	color:red;
+}
+
+.clickable{
+	cursor: pointer;
+}

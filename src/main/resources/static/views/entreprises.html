@@ -1,0 +1,47 @@
+<!-- On indique que c'est une vue d'angularJS -->
+<div ui-view>
+	<div class="container col-md-10 col-md-offset-1 col-sm-6 col-xs-6 col-xs-offset-3">
+		<div class="panel panel-primary">
+			<div class="panel-heading">Liste des entreprises</div>
+			<div class="panel-body">
+				<label>Mot clé</label>
+				<!-- mc sera stocké dans le model($scope)
+				une modification dans la page entrainera une 
+				modification dans le modèle; et une modification 
+				dans le modèle entrainera une modification dans la page
+				-->
+				<input type="text" ng-model="mc" /> 
+				<button ng-click="chercher()" class="btn btn-primary">Chercher</button>
+	
+				<table class="table table-striped spacer">
+					<thead>
+						<tr>
+							<th>Code</th>
+							<th>Nom</th>
+							<th>Mail</th>
+							<th>Raison sociale</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="e in pageEntreprises.content"> 
+							<td>{{e.code}}</td> <!-- property binding -->
+							<td>{{e.nom}}</td>
+							<td>{{e.email}}</td>
+							<td>{{e.raisonSociale}}</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="container">
+					<ul class="nav nav-pills">
+					<!-- Parcourir un tableau par index track by $index -->
+						<li ng-repeat="p in pages track by $index" 
+							class="clickable"
+							ng-class="{'active':pageCourante==$index}">
+							<a ng-click="gotoPage($index)">{{$index}}</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
